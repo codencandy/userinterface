@@ -1,4 +1,5 @@
 #include <AppKit/AppKit.h>
+#include "CNC_Window.mm"
 
 int main()
 {
@@ -9,6 +10,8 @@ int main()
     [app setActivationPolicy: NSApplicationActivationPolicyRegular];
     [app activateIgnoringOtherApps: true];
     [app finishLaunching];
+
+    MainWindow* window = CreateMainWindow( &running );
     
     while( running )
     {
