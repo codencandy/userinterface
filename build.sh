@@ -1,3 +1,15 @@
+FRAMEWORKS='-framework AppKit'
 FLAGS='-std=c++20 --debug'
+TIMEFORMAT=%R
 
-clang CNC_Main.mm -o userinterface ${FLAGS}
+platform()
+{
+    clang ${FRAMEWORKS} CNC_Main.mm -o userinterface ${FLAGS}
+}
+
+main()
+{
+    time platform
+}
+
+main
