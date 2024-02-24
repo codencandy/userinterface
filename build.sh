@@ -1,5 +1,7 @@
+#! bin/bash
+
 FRAMEWORKS='-framework AppKit -framework Metal -framework MetalKit -framework CoreVideo'
-FLAGS='-std=c++20 --debug'
+FLAGS='-std=c++20 --debug -Ilibs/imgui -Ilibs/imgui/backends'
 TIMEFORMAT=%R
 IGNORE='-Wno-nullability-completeness'
 

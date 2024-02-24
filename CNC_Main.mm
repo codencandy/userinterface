@@ -2,6 +2,10 @@
 #include "CNC_Window.mm"
 #include "CNC_Renderer.mm"
 
+#include "imgui.h"
+#include "imgui_impl_metal.h"
+#include "imgui_impl_osx.h"
+
 int main()
 {
     bool running = true;
