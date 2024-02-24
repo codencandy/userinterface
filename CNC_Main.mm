@@ -12,7 +12,10 @@ int main()
     [app activateIgnoringOtherApps: true];
     [app finishLaunching];
 
-    MainWindow* window = CreateMainWindow( &running );
+    MainWindow*   window   = CreateMainWindow( &running );
+    MainRenderer* renderer = CreateMainRenderer();
+
+    [window setContentView: renderer->m_view];
     
     while( running )
     {
@@ -32,6 +35,9 @@ int main()
             while( event != NULL );
 
             [window->m_displayLinkSignal wait];
+
+            // render the app here
+            Render( renderer );
         }
     }
 
