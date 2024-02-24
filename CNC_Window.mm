@@ -69,6 +69,7 @@ MainWindow* CreateMainWindow( bool* running )
     [window makeKeyAndOrderFront: NULL ];
     [window setDelegate: delegate];
 
+    window->m_displayLinkSignal = [NSCondition new];
     CVDisplayLinkCreateWithActiveCGDisplays( &window->m_displayLink );
     CVDisplayLinkSetOutputCallback( window->m_displayLink, &DisplayLinkCallback, (void*)window );
     CVDisplayLinkStart( window->m_displayLink );
