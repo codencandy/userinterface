@@ -11,6 +11,8 @@ platform()
 main()
 {
     time platform
+    CODE_SIZE=$(cloc --exclude-dir=libs . | grep -o -E '([0-9]+)' | tail -1)
+    echo "-> LINES OF CODE: " $CODE_SIZE
 }
 
 main
