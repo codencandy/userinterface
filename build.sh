@@ -1,13 +1,13 @@
 #! bin/bash
 
-FRAMEWORKS='-framework AppKit -framework Metal -framework MetalKit -framework CoreVideo'
+FRAMEWORKS='-framework AppKit -framework Metal -framework MetalKit -framework CoreVideo -framework GameController'
 FLAGS='-std=c++20 --debug -Ilibs/imgui -Ilibs/imgui/backends'
 TIMEFORMAT=%R
 IGNORE='-Wno-nullability-completeness'
 
 platform()
 {
-    clang ${FRAMEWORKS} CNC_Main.mm -o userinterface ${FLAGS} ${IGNORE}
+    clang++ ${FRAMEWORKS} CNC_Main.mm -o userinterface ${FLAGS} ${IGNORE}
 }
 
 main()

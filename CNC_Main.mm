@@ -2,9 +2,7 @@
 #include "CNC_Window.mm"
 #include "CNC_Renderer.mm"
 
-#include "imgui.h"
-#include "imgui_impl_metal.h"
-#include "imgui_impl_osx.h"
+#include "CNC_ImGui.h"
 
 int main()
 {
@@ -20,6 +18,18 @@ int main()
     MainRenderer* renderer = CreateMainRenderer();
 
     [window setContentView: renderer->m_view];
+
+    // IMGUI SETUP
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+    
+    // Setup Dear ImGui style
+    ImGui::StyleColorsDark();
+
+    // Setup Renderer backend
+    ImGui_ImplMetal_Init(renderer->m_device);
     
     while( running )
     {
