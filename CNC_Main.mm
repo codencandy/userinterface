@@ -1,7 +1,10 @@
 #include <AppKit/AppKit.h>
 
 #define IMGUI_DEFINE_MATH_OPERATORS
-#include "CNC_ImGui.h"
+#include <imgui.h>
+#include <imgui_impl_metal.h>
+#include <imgui_impl_osx.h>
+
 #include "CNC_Window.mm"
 #include "CNC_Renderer.mm"
 

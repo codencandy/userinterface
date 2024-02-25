@@ -3,3 +3,4 @@ userinterface
 *.dSYM
 libs/imgui
 imgui.ini
+CNC_ImGui.o
