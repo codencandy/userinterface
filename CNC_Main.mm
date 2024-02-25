@@ -1,8 +1,9 @@
 #include <AppKit/AppKit.h>
+
+#define IMGUI_DEFINE_MATH_OPERATORS
+#include "CNC_ImGui.h"
 #include "CNC_Window.mm"
 #include "CNC_Renderer.mm"
-
-#include "CNC_ImGui.h"
 
 int main()
 {
@@ -30,6 +31,7 @@ int main()
 
     // Setup Renderer backend
     ImGui_ImplMetal_Init(renderer->m_device);
+    ImGui_ImplOSX_Init(renderer->m_view);
     
     while( running )
     {
@@ -49,6 +51,21 @@ int main()
             while( event != NULL );
 
             [window->m_displayLinkSignal wait];
+
+            // Start the Dear ImGui frame
+            ImGui_ImplMetal_NewFrame( [renderer->m_view currentRenderPassDescriptor] );
+            ImGui_ImplOSX_NewFrame( renderer->m_view );
+            ImGui::NewFrame();
+
+            ImGuiIO& io = ImGui::GetIO();
+            io.DisplaySize.x = renderer->m_view.bounds.size.width;
+            io.DisplaySize.y = renderer->m_view.bounds.size.height;
+
+            CGFloat framebufferScale = renderer->m_view.window.screen.backingScaleFactor ?: NSScreen.mainScreen.backingScaleFactor;
+            io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale);
+
+            static bool show_demo_window = true;
+            ImGui::ShowDemoWindow( &show_demo_window );
 
             // render the app here
             Render( renderer );

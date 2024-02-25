@@ -2,3 +2,4 @@
 userinterface
 *.dSYM
 libs/imgui
+imgui.ini
