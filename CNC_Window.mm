@@ -58,7 +58,7 @@ CVReturn DisplayLinkCallback( CVDisplayLinkRef displayLink,
 
 MainWindow* CreateMainWindow( bool* running )
 {
-    NSRect contentRect = NSMakeRect( 0, 0, 800, 600);
+    NSRect contentRect = NSMakeRect( 0, 0, 800, 1000);
     MainWindowDelegate* delegate = [[MainWindowDelegate alloc] initWithBool:running];
     MainWindow*         window   = [[MainWindow alloc] initWithContentRect: contentRect
                                                                  styleMask: NSWindowStyleMaskClosable | NSWindowStyleMaskTitled 

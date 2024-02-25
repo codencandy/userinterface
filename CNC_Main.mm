@@ -28,6 +28,11 @@ int main()
     
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
+    ImGuiStyle& myStyle = ImGui::GetStyle();
+    myStyle.FrameRounding  = 3.0f;
+    myStyle.WindowRounding = 6.0f;
+    myStyle.WindowPadding  = ImVec2( 8.0f, 8.0f );
+    myStyle.FramePadding   = ImVec2( 8.0f, 8.0f );
 
     // Setup Renderer backend
     ImGui_ImplMetal_Init(renderer->m_device);
