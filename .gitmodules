@@ -1,4 +1,0 @@
-
-[submodule "libs/imgui"]
-	path = libs/imgui
-	url = git@github.com:codencandy/imgui.git
