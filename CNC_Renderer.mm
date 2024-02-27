@@ -57,7 +57,7 @@ MainRenderer* CreateMainRenderer()
     [renderer->m_view setDelegate: renderer];
     [renderer->m_view setNeedsDisplay: false];
     [renderer->m_view setPaused: true];
-    [renderer->m_view setClearColor: MTLClearColorMake( 1.0, 0.0, 0.0, 1.0)];
+    [renderer->m_view setClearColor: MTLClearColorMake( 0.5, 0.5, 0.5, 1.0)];
     
     return renderer;
 }
