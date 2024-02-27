@@ -40,6 +40,12 @@ int main()
     // Setup Renderer backend
     ImGui_ImplMetal_Init(renderer->m_device);
     ImGui_ImplOSX_Init(renderer->m_view);
+
+    io.DisplaySize.x = renderer->m_view.bounds.size.width;
+    io.DisplaySize.y = renderer->m_view.bounds.size.height;
+
+    CGFloat framebufferScale = renderer->m_view.window.screen.backingScaleFactor ?: NSScreen.mainScreen.backingScaleFactor;
+    io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale);
     
     while( running )
     {
@@ -63,14 +69,7 @@ int main()
             // Start the Dear ImGui frame
             ImGui_ImplMetal_NewFrame( [renderer->m_view currentRenderPassDescriptor] );
             ImGui_ImplOSX_NewFrame( renderer->m_view );
-            ImGui::NewFrame();
-
-            ImGuiIO& io = ImGui::GetIO();
-            io.DisplaySize.x = renderer->m_view.bounds.size.width;
-            io.DisplaySize.y = renderer->m_view.bounds.size.height;
-
-            CGFloat framebufferScale = renderer->m_view.window.screen.backingScaleFactor ?: NSScreen.mainScreen.backingScaleFactor;
-            io.DisplayFramebufferScale = ImVec2(framebufferScale, framebufferScale);
+            ImGui::NewFrame();            
 
             static bool show_demo_window = true;
             ImGui::ShowDemoWindow( &show_demo_window );

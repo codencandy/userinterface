@@ -24,17 +24,11 @@
 {
     @autoreleasepool
     {
-        id<MTLCommandBuffer> commandBuffer = [m_commandQueue commandBuffer];
-        MTLRenderPassDescriptor* renderPassDescriptor = m_view.currentRenderPassDescriptor;
-        
-        id<MTLRenderCommandEncoder> commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor: renderPassDescriptor];
+        id<MTLCommandBuffer> commandBuffer = [m_commandQueue commandBuffer];      
+        id<MTLRenderCommandEncoder> commandEncoder = [commandBuffer renderCommandEncoderWithDescriptor: [m_view currentRenderPassDescriptor]];
 
         ImGui::Render();
-        ImDrawData* draw_data = ImGui::GetDrawData();
-
-        [commandEncoder pushDebugGroup:@"Dear ImGui rendering"];
-        ImGui_ImplMetal_RenderDrawData(draw_data, commandBuffer, commandEncoder);
-        [commandEncoder popDebugGroup];
+        ImGui_ImplMetal_RenderDrawData( ImGui::GetDrawData(), commandBuffer, commandEncoder);
         
         [commandEncoder endEncoding];
         [commandBuffer presentDrawable: [m_view currentDrawable]];
