@@ -72,12 +72,26 @@ int main()
             ImGui::NewFrame();            
 
             static bool show_demo_window = true;
-            ImGui::ShowDemoWindow( &show_demo_window );
+            if( show_demo_window )
+            {
+                ImGui::ShowDemoWindow( &show_demo_window );
+            }
+            else
+            {
+                if( io.KeysDown[ImGuiKey_F1] )
+                {
+                    show_demo_window = true;
+                }
+            }
 
             // render the app here
             Render( renderer );
         }
     }
+
+    ImGui_ImplMetal_Shutdown();
+    ImGui_ImplOSX_Shutdown();
+    ImGui::DestroyContext( NULL );
 
     return 0;
 }
