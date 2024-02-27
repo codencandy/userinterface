@@ -28,9 +28,10 @@ int main()
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-    
+    io.Fonts->AddFontFromFileTTF( "res/comfortaa.ttf", 14 );
+
     // Setup Dear ImGui style
-    ImGui::StyleColorsDark();
+    ImGui::StyleColorsLight();
     ImGuiStyle& myStyle = ImGui::GetStyle();
     myStyle.FrameRounding  = 3.0f;
     myStyle.WindowRounding = 6.0f;
