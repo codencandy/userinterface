@@ -36,3 +36,8 @@ Then run ```sh build.sh ALL``` once to get ImGui to build into an object file. E
 
 In order to run execute <br>
 ```./userinterface```
+
+## Font used
+
+The font I used to replace the standard ImGui font is **Blender Pro Book**<br>
+Fonts made from <a href="http://www.onlinewebfonts.com">Web Fonts</a> is licensed by CC BY 4.0
